@@ -25,6 +25,7 @@
   //login page
   'email'=>'ই-মেইল ঠিকানা',
   'password'=>'পাসওয়ার্ড',
+  'confirmpassword'=>'পাসওয়ার্ড নিশ্চিত করুন',
   'rememberme'=>'আমাকে মনে কর',
   'forgetpassword'=>'আপনি কি পাসওয়ার্ড ভুলে গেছেন?',
 
