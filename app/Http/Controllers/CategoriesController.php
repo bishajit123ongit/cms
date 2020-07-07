@@ -42,7 +42,8 @@ class CategoriesController extends Controller
         Category::create([
            'name'=>$request->name
         ]);
-        session()->flash('success','Category Created Successfully!!');
+        $msg= __('translateproperties.categorycreatemsg');
+        session()->flash('success',$msg);
         return redirect(route('categories.index'));
     }
 
@@ -81,8 +82,8 @@ class CategoriesController extends Controller
             'name'=>$request->name
         ]);
 
-
-        session()->flash('success','Category Updated Successfully!!');
+        $msg= __('translateproperties.categoryupdatemsg');
+        session()->flash('success',$msg);
         return redirect(route('categories.index'));
     }
 
@@ -97,12 +98,14 @@ class CategoriesController extends Controller
 
        if($category->post->count()>0)
        {
-         session()->flash('error','Category Can not be Deleted because it has some post');
+        $msgg= __('translateproperties.categorydeleteerrormsg');
+         session()->flash('error',$msgg);
          return redirect()->back();
        }
 
         $category->delete();
-        session()->flash('success','Category Deleted Successfully');
+        $msg= __('translateproperties.categorydeletemsg');
+        session()->flash('success',$msg);
         return redirect(route('categories.index'));
     }
 }

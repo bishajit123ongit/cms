@@ -4,16 +4,16 @@
 
 <div class="card card-default">
 <div class="card-header">
-		Users
+		@lang('translateproperties.users')
 </div>
 <div class="card-body">
 	@if($users->count() > 0)
 	
         <table class="table">
 		  <thead>
-		  	<th>Image</th>
-		  	<th>Name</th>
-		  	<th>Email</th>
+		  	<th>@lang('translateproperties.tableuserimage')</th>
+		  	<th>@lang('translateproperties.tableusername')</th>
+		  	<th>@lang('translateproperties.tableuseremail')</th>
 		  	<th></th>
 		  	<th></th>
 		  </thead> 
@@ -34,7 +34,7 @@
                 @if(!$user->isAdmin())
                    <form action="{{route('users.make-admin',$user->id)}}" method="POST">
                    	@csrf
-                    	<button type="submit" class="btn btn-success btn-sm">Make Admin</button>
+                    	<button type="submit" class="btn btn-success btn-sm">@lang('translateproperties.tableusermakeadmin')</button>
                    </form>
                 @endif
 		  		</td>
@@ -44,7 +44,7 @@
 		  </tbody>
 	
 	@else
-      <h3 class="text-center">No User Yet.</h3>
+      <h3 class="text-center">@lang('translateproperties.nouseryet')</h3>
 	@endif
 </div>
 

@@ -1,7 +1,7 @@
   <div class="col-md-4 col-xl-3">
               <div class="sidebar px-4 py-md-0">
 
-                <h6 class="sidebar-title">Search</h6>
+                <h6 class="sidebar-title">@lang('translateproperties.search')</h6>
                 <form class="input-group" action="" method="GET">
                   <input type="text" class="form-control" name="search" placeholder="Search" value="{{request()->query('search')}}">
                   <div class="input-group-addon">
@@ -11,7 +11,7 @@
 
                 <hr>
 
-                <h6 class="sidebar-title">Categories</h6>
+                <h6 class="sidebar-title">@lang('translateproperties.categories')</h6>
                 <div class="row link-color-default fs-14 lh-24">
                   
 
@@ -50,7 +50,7 @@
 
                 <hr>
 
-                <h6 class="sidebar-title">Tags</h6>
+                <h6 class="sidebar-title">@lang('translateproperties.tags')</h6>
                 <div class="gap-multiline-items-1">
                  
                  @foreach($tags as $tag)

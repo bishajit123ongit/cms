@@ -13,6 +13,12 @@ use App\Http\Controllers\Blog\PostsController;
 |
 */
 
+Route::get('/locale/{locale}',function($locale){
+  Session::put('locale',$locale);
+  return redirect()->back();
+  /*return view('welcome');*/
+});
+
 Route::get('/','WelcomeController@index')->name('welcome');
 Route::get('blog/posts/{post}', [PostsController::class,'show'])->name('blog.show');
 Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category');

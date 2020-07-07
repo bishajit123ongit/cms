@@ -44,9 +44,21 @@
           </ul>
         </section>
 
-        <a class="btn btn-xs btn-round btn-success" href="{{route('login')}}">LogIn</a>
+        <a style="height: 33px;" class="btn btn-xs btn-round btn-success" href="{{route('login')}}">@lang('translateproperties.login')</a>
+
+        <div style="margin-left: 10px;" class="btn-group">
+                    <button style="width: 150px;" type="button" class="btn btn-round btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      @lang('translateproperties.language')
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{{ url('locale/en') }}">@lang('translateproperties.english')</a>
+                      <a class="dropdown-item" href="{{ url('locale/bn') }}">@lang('translateproperties.bangla')</a>
+                    </div>
+                  </div>
 
       </div>
+    <!-- Example single danger button -->
+                  
     </nav><!-- /.navbar -->
 
 

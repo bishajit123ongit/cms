@@ -66,8 +66,9 @@ class PostsController extends Controller
         if($request->tags){
             $post->tags()->attach($request->tags);
         }
+         $msg= __('translateproperties.postcreatemsg');
 
-        session()->flash('success','Post Created Successfully!');
+        session()->flash('success',$msg);
 
         return redirect(route('posts.index'));
     }
@@ -122,7 +123,8 @@ class PostsController extends Controller
             $post->tags()->sync($request->tags);
          }
          $post->update($data);
-         session()->flash('success','Posts Updated Successfully!');
+         $msg= __('translateproperties.postupdatemsg');
+         session()->flash('success',$msg);
          return redirect(route('posts.index'));
     }
 
@@ -145,8 +147,8 @@ class PostsController extends Controller
         {
             $post->delete();
         }
-       
-        session()->flash('success','Posts Deleted Successfully!');
+        $msg= __('translateproperties.postdeletemsg');
+        session()->flash('success',$msg);
         return redirect(route('posts.index'));
     }
 
@@ -161,7 +163,8 @@ class PostsController extends Controller
     {
         $post=Post::withTrashed()->where('id',$id)->firstOrFail();
         $post->restore();
-        session()->flash('success','Posts Restore Successfully!');
+        $msg= __('translateproperties.postrestoremsg');
+        session()->flash('success',$msg);
         return redirect()->back();
 
     }

@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-	<a href="{{route('categories.create')}}" class="btn btn-success">Add Category</a>
+	<a href="{{route('categories.create')}}" class="btn btn-success">@lang('translateproperties.addcategory')</a>
 </div>
 <div class="card card-default">
 	<div class="card-header">
-		Categories
+		@lang('translateproperties.cat')
 	</div>
 
 	<div class="card-header">
 	@if($categories->count()>0)
 	<table class="table">
 		  <thead>
-		  	<th>Name</th>
-		  	<th>Post</th>
+		  	<th>@lang('translateproperties.tableusername')</th>
+		  	<th>@lang('translateproperties.po')</th>
 		  	<th></th>
 		  </thead> 
 		  <tbody>
@@ -25,8 +25,8 @@
 		  			{{$category->post()->count()}}
 		  		</td>
 		  		<td>
-		  			<a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm ">Edit</a>
-		  			<button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">Delete</button>
+		  			<a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm ">@lang('translateproperties.btnedit')</a>
+		  			<button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})">@lang('translateproperties.btndelete')</button>
 		  		</td>
 		  	</tr>
 		  	@endforeach
@@ -34,7 +34,7 @@
 			
 		</table>
 	@else
-      <h3 class="text-center">No categories yet.</h3>
+      <h3 class="text-center">@lang('translateproperties.nocategoryyet')</h3>
 	@endif
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -44,17 +44,17 @@
   	@method('DELETE')
 	    <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Category</h5>
+        <h5 class="modal-title" id="deleteModalLabel">@lang('translateproperties.tablepostcategory')</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p class="text-center text-blod"> Are you sure want to delete category??</p>
+        <p class="text-center text-blod"> @lang('translateproperties.categorydeletewarningmsg')</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Go Back</button>
-        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"> @lang('translateproperties.deletecancel')</button>
+        <button type="submit" class="btn btn-danger">@lang('translateproperties.deleteconfirm')</button>
       </div>
     </div>
 </form>

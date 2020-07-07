@@ -16,7 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+
     @yield('css')
 </head>
 <body>
@@ -39,14 +41,16 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">@lang('translateproperties.login')</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">@lang('translateproperties.register')</a>
                                 </li>
+                                     
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -58,13 +62,13 @@
 
 
                                     <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
-                                        My Profile
+                                        @lang('translateproperties.userprofile')
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @lang('translateproperties.logout')
                                     </a>
 
 
@@ -78,7 +82,17 @@
                         @endguest
                     </ul>
                 </div>
+                 <div class="btn-group">
+                    <button style="width: 110px;" type="button" class="btn btn-round btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      @lang('translateproperties.language')
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{{ url('locale/en') }}">@lang('translateproperties.english')</a>
+                      <a class="dropdown-item" href="{{ url('locale/bn') }}">@lang('translateproperties.bangla')</a>
+                    </div>
+                  </div>
             </div>
+
         </nav>
 
         <main class="py-4">
@@ -105,26 +119,26 @@
                                 @if(auth()->user()->isAdmin())
                                 <li class="list-group-item">
                                     <a href="{{route('users.index')}}">
-                                        Users
+                                        @lang('translateproperties.users')
                                     </a>
                                 </li>
                                 @endif
                             </ul>
                             <ul class="list-group">
                                  <li class="list-group-item">
-                                     <a href="{{route('tags.index')}}">Tags</a>
+                                     <a href="{{route('tags.index')}}">@lang('translateproperties.tags')</a>
                                 </li>
                                 <li class="list-group-item">
-                                     <a href="{{route('posts.index')}}">Posts</a>
+                                     <a href="{{route('posts.index')}}">@lang('translateproperties.posts')</a>
                                 </li>
                                 <li class="list-group-item">
-                                     <a href="{{route('categories.index')}}">Category</a>
+                                     <a href="{{route('categories.index')}}">@lang('translateproperties.category')</a>
                                  </li>
                                             
                             </ul>
                             <ul class="list-group" style="margin-top: 30px;">
                                  <li class="list-group-item">
-                                     <a href="{{route('posts-trashed.index')}}">Trash Post</a>
+                                     <a href="{{route('posts-trashed.index')}}">@lang('translateproperties.trashpost')</a>
                                 </li>
                             </ul>
                          </div>

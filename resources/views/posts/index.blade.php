@@ -2,21 +2,21 @@
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-	<a href="{{route('posts.create')}}" class="btn btn-success">Add Post</a>
+	<a href="{{route('posts.create')}}" class="btn btn-success">@lang('translateproperties.addpost')</a>
 </div>
 
 <div class="card card-default">
 <div class="card-header">
-		Posts
+		@lang('translateproperties.posts')
 </div>
 <div class="card-body">
 	@if($posts->count() > 0)
 	
         <table class="table">
 		  <thead>
-		  	<th>Image</th>
-		  	<th>Title</th>
-		  	<th>Category</th>
+		  	<th>@lang('translateproperties.tableuserimage')</th>
+		  	<th>@lang('translateproperties.tableposttitle')</th>
+		  	<th>@lang('translateproperties.tablepostcategory')</th>
 		  	<th></th>
 		  	<th></th>
 		  </thead> 
@@ -37,12 +37,12 @@
                <form action="{{route('posts.restore',$post->id)}}" method="POST">
                	@csrf
                	@method('PUT')
-               	<button type="submit" class="btn btn-info btn-sm">Restore</button>
+               	<button type="submit" class="btn btn-info btn-sm">@lang('translateproperties.postrestore')</button>
                </form>
                </td>
                @else
 				<td>
-		  			<a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm">Edit</a>
+		  			<a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm">@lang('translateproperties.btnedit')</a>
 		  		</td>
 		  		@endif
 		  		<td>
@@ -50,7 +50,11 @@
 		  				@csrf
 		  				@method('DELETE')
 		  				<button type="submit" class="btn btn-danger btn-sm">
-		  					{{$post->trashed()? 'Delete' : 'Trashed'}}
+		  					@if($post->trashed())
+		  					 @lang('translateproperties.btndelete')
+		  					@else
+		  					 @lang('translateproperties.tableposttrash')
+		  					@endif
 
 		  				</button>
 		  			</form>
@@ -60,7 +64,7 @@
 		  </tbody>
 	
 	@else
-      <h3 class="text-center">No Post Yet.</h3>
+      <h3 class="text-center">@lang('translateproperties.nopostyetmsg')</h3>
 	@endif
 </div>
 

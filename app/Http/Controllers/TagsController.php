@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tag;
 use App\Http\Requests\Tags\CreateTagRequest;
 use App\Http\Requests\Tags\UpdateTagRequest;
+use Illuminate\Support\Facades\App;
 
 class TagsController extends Controller
 {
@@ -80,9 +81,10 @@ class TagsController extends Controller
         $tag->update([
             'name'=>$request->name
         ]);
+           $msg= __('translateproperties.tagupdatemsg');
 
 
-        session()->flash('success','Tag Updated Successfully!!');
+        session()->flash('success', $msg);
         return redirect(route('tags.index'));
     }
 

@@ -36,9 +36,9 @@ class UsersController extends Controller
           'about'=>$request->about
 
         ]);
+        $msg= __('translateproperties.userupdatemsg');
 
-        session()->flash('success','User updated successfully!');
+        session()->flash('success', $msg);
         return redirect()->back();
-
     }
 }
