@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="card card-default">
@@ -9,7 +9,7 @@
 				 @lang('translateproperties.postcreate')
 		      @endif
 	</div>
-	<div class="card-body">
+	<div style="padding-bottom: 30px;" class="card-body">
 		<form action="{{isset($posts) ? route('posts.update',$posts->id) :route('posts.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
 			@if(isset($posts))

@@ -1,77 +1,112 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">@lang('translateproperties.register')</div>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{{asset('public/frontend/registration/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
 
-                <div class="card-body">
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{asset('public/frontend/registration/css/style.css')}}">
+    <style type="text/css">
+    .color{
+    color:white;
+}
+.liststyle{
+    color: white;
+    display: inline-block;
+    width: 89px;
+    vertical-align: top;
+}
+.imgstyle{
+    float: right;
+    padding-right: 25px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    margin-top: calc(5% - 160px);
+}
+</style>
+</head>
+<body>
+
+    <div class="main">
+ @if ( Config::get('app.locale') == 'en')
+                      <a id="btnbn" href="{{ url('locale/bn') }}">  <img class="imgstyle" src="public/image/bn.png"></a>
+                 @else
+                        <a id="btnen" href="{{ url('locale/en') }}"><img class="imgstyle" src="public/image/en.png"></a>
+                @endif
+        <section class="signup">
+
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                 
+                <div class="signup-content">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">@lang('translateproperties.tableusername')</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
+                        <h2 class="form-title">@lang('translateproperties.createaccount')<a href="{{url('/')}}">CMS</a></h2>
+                        <div class="form-group">
+                            <input id="name" type="text" class="form-input" name="name" placeholder=@lang('translateproperties.tableusername') @error('name') is-invalid @enderror"  value="{{ old('name') }}" required autocomplete="name" autofocus/>
+                            @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                            @enderror
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">@lang('translateproperties.email')</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder=@lang('translateproperties.email') @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"/>
+                             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                            @enderror
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">@lang('translateproperties.password')</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder=@lang('translateproperties.password') @error('password') is-invalid @enderror" required autocomplete="new-password" />
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                 @enderror
-                            </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password_confirmation" id="password-confirm" placeholder=@lang('translateproperties.confirmpassword') required autocomplete="new-password"/>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">@lang('translateproperties.confirmpassword')</label>
+                      
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>@lang('translateproperties.agreementmsg')  <a href="#" class="term-service">@lang('translateproperties.agreementmsg2')</a></label>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary form-submit">
                                     @lang('translateproperties.register')
                                 </button>
-                            </div>
                         </div>
+
                     </form>
+                    <p class="loginhere">
+                         @lang('translateproperties.signinmsg') <a href="{{ route('login') }}" class="loginhere-link">@lang('translateproperties.loginhere')</a>
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
+
     </div>
-</div>
-@endsection
+
+    <!-- JS -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

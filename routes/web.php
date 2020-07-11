@@ -36,10 +36,12 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('posts','PostsController');
 	Route::get('trashed-post','PostsController@trashed')->name('posts-trashed.index');
 	Route::PUT('restore-post/{post}','PostsController@restore')->name('posts.restore');
+  Route::get('dashboard','DashboardController@index')->name('dashboard.index');
 });
 
 Route::middleware(['auth','admin'])->group(function(){
   Route::get('users','UsersController@Index')->name('users.index');
+  Route::get('users/chart','ChartController@userChart')->name('users.chart');
   Route::put('Update/Users','UsersController@update')->name('users.update-profile');
   Route::post('users/{user}/make-admin','UsersController@makeAdmin')->name('users.make-admin');
   Route::get('users/profile','UsersController@edit')->name('users.edit-profile');

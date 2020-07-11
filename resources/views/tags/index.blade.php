@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
@@ -6,7 +6,7 @@
 </div>
 <div class="card card-default">
 	<div class="card-header">
-		@lang('translateproperties.tags')
+		@lang('translateproperties.t')
 	</div>
 
 	<div class="card-header">

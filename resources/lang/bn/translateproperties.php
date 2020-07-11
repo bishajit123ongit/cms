@@ -28,6 +28,8 @@
   'confirmpassword'=>'পাসওয়ার্ড নিশ্চিত করুন',
   'rememberme'=>'আমাকে মনে কর',
   'forgetpassword'=>'আপনি কি পাসওয়ার্ড ভুলে গেছেন?',
+  'reg'=>'নতুন ব্যবহারকারী? নিবন্ধন',
+  'loginusing'=>'অথবা লগইন ব্যবহার করে:',
 
   //Reset Password Page
   'resetpassword'=>'পাসওয়ার্ড রিসেট করুন',
@@ -94,8 +96,28 @@
   'categorydeleteerrormsg'=>'বিভাগটি মোছা যায় না কারণ এর কিছু পোস্ট রয়েছে',
   'categorydeletemsg'=>'বিভাগ সফলভাবে মোছা হয়েছে',
   'nocategoryyet'=>'এখনও কোন বিভাগ নেই।',
-  'categorydeletewarningmsg'=>'আপনি কি বিভাগটি মুছতে চান?'
-
+  'categorydeletewarningmsg'=>'আপনি কি বিভাগটি মুছতে চান?',
+  'footer'=>'2019 স্লাইড লগইন ফর্ম। সমস্ত অধিকার সংরক্ষিত |  দ্বারা ডিজাইন',
+  'signinmsg'=>'ইতিমধ্যে একটি অ্যাকাউন্ট আছে?',
+  'loginhere'=>'এখানে লগইন করুন',
+  'agreementmsg'=>'আমি সমস্ত বিবৃতিতে সম্মত',
+  'agreementmsg2'=>'সেবা পাবার শর্ত',
+  'createaccount'=>'অ্যাকাউন্ট তৈরি করুন | ',
+  'dashboard'=>'ড্যাশবোর্ড',
+  'copyright'=>'কপিরাইট',
+  'sal'=>'২০১৪-২০১৯',
+  'allright'=>'সমস্ত অধিকার সংরক্ষিত.',
+  'version'=>'সংস্করণ',
+  'num'=>'৩.০.৫',
+  't'=>'ট্যাগ',
+  //dashboard screen
+  'userreporting'=>'ব্যবহারকারী রিপোর্টিং',
+  'numofuser'=>'ব্যবহারকারীর সংখ্যা',
+  'totaltag'=>'মোট ট্যাগ',
+  'totalcat'=>'মোট বিভাগ',
+  'totalposts'=>'মোট পোস্ট',
+  'userreg'=>'ব্যবহারকারী নিবন্ধসমূহ',
+  'moreinfo'=>'অধিক তথ্য'
 
  ]
 

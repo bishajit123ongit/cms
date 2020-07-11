@@ -23,8 +23,11 @@
   //login page
   'email'=>'E-Mail Address',
   'password'=>'Password',
+  'confirmpassword'=>'Confirm Password',
   'rememberme'=>'Remember Me',
   'forgetpassword'=>'Forgot Your Password?',
+  'reg'=>'NEW USER? REGISTER',
+  'loginusing'=>'Or Login Using :',
 
   //Reset Password Page
   'resetpassword'=>'Reset Password',
@@ -93,8 +96,29 @@
   'categorydeleteerrormsg'=>'Category Can not be Deleted because it has some post',
   'categorydeletemsg'=>'Category Deleted Successfully',
   'nocategoryyet'=>'No categories yet.',
-  'categorydeletewarningmsg'=>'Are you sure want to delete category?'
+  'categorydeletewarningmsg'=>'Are you sure want to delete category?',
+  'footer'=>'2019 Slide Login Form . All rights reserved | Design by',
+  'signinmsg'=>'Have already an account ?',
+  'loginhere'=>'Login here',
+  'agreementmsg'=>'I agree all statements in',
+  'agreementmsg2'=>'Terms of service',
+  'createaccount'=>'CREATE ACCOUNT | ',
+  'dashboard'=>'Dashboard',
+  'copyright'=>'Copyright',
+  'sal'=>'2014-2019',
+  'allright'=>'All rights reserved.',
+  'version'=>'Version',
+  'num'=>'3.0.5',
+  't'=>'Tags',
 
+  //dashboard screen
+  'userreporting'=>'User Reporting',
+  'numofuser'=>'Number of users',
+  'totaltag'=>'Total Tag',
+  'totalcat'=>'Total Categories',
+  'totalposts'=>'Total Posts',
+  'userreg'=>'User Registrations',
+  'moreinfo'=>'More Info'
  ]
 
 ?>

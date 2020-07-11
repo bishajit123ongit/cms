@@ -54,7 +54,7 @@
                       <a class="dropdown-item" href="{{ url('locale/en') }}">@lang('translateproperties.english')</a>
                       <a class="dropdown-item" href="{{ url('locale/bn') }}">@lang('translateproperties.bangla')</a>
                     </div>
-                  </div>
+        </div>
 
       </div>
     <!-- Example single danger button -->
