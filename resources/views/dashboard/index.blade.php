@@ -139,6 +139,7 @@ chart.render();
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
+            
 
             <!-- DIRECT CHAT -->
             <div class="card direct-chat direct-chat-primary">
