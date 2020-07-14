@@ -8,6 +8,7 @@ use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Post;
 use App\Tag;
 use App\Category;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -167,5 +168,16 @@ class PostsController extends Controller
         session()->flash('success',$msg);
         return redirect()->back();
 
+    }
+
+    public function viewPostChart()
+    {
+        $currrent_month_post=Post::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->month)->count();
+        $current_last_one_post=Post::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->subMonth(1))->count();
+        $current_last_two_post=Post::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->subMonth(2))->count();
+        return view('posts.showchart')->with(compact('currrent_month_post','current_last_one_post','current_last_two_post'));
     }
 }

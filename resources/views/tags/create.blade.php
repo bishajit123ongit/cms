@@ -36,9 +36,12 @@
 
 			<div class="form-group">
 				<button class="btn btn-success">
+				
 					@if(isset($tag))
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 						@lang('translateproperties.updatetag')
 					@else
+					<i class="fa fa-plus-circle" aria-hidden="true"></i>
 						@lang('translateproperties.addtag')
 					@endif
 				<!-- {{isset($tag)?'Update Tag' : 'Add Tag'}} --></button>

@@ -53,7 +53,7 @@
 
     <div class="bg-layer">
         
-        <h1><a class="color" href="{{url('/')}}">CMS</a> 
+        <h1><a style="margin-left:40px;"class="color" href="{{url('/')}}">CMS</a> 
              @if ( Config::get('app.locale') == 'en')
           <a id="btnbn" href="{{ url('locale/bn') }}">  <img class="imgstyle" src="public/image/bn.png"></a>
             @else
@@ -62,6 +62,18 @@
         </h1>
 
         <div class="header-main">
+        <div class="signup-content">
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                    {{session()->get('success')}}
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                     <div class="alert alert-danger">
+                             {{session()->get('error')}}
+                     </div>
+                @endif
             <div class="main-icon">
                 <span class="fa fa-eercast"></span>
             </div>
@@ -95,7 +107,7 @@
                     </div>
 
                     <div class="bottom">
-                        <button type="submit" class="btn">@lang('translateproperties.login')</button>
+                        <button type="submit" class="btn"><i style="margin-right:5px;"class="fa fa-sign-in" aria-hidden="true"></i>@lang('translateproperties.login')</button>
                     </div>
                     <div class="links">
                         @if (Route::has('password.request'))

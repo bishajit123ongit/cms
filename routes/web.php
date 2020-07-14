@@ -37,6 +37,10 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('trashed-post','PostsController@trashed')->name('posts-trashed.index');
 	Route::PUT('restore-post/{post}','PostsController@restore')->name('posts.restore');
   Route::get('dashboard','DashboardController@index')->name('dashboard.index');
+  Route::get('tag/chart','TagsController@viewTagChart')->name('tag.chart');
+  Route::get('post/chart','PostsController@viewPostChart')->name('post.chart');
+  Route::get('category/chart','CategoriesController@viewCategoryChart')->name('category.chart');
+
 });
 
 Route::middleware(['auth','admin'])->group(function(){
@@ -46,6 +50,8 @@ Route::middleware(['auth','admin'])->group(function(){
   Route::post('users/{user}/make-admin','UsersController@makeAdmin')->name('users.make-admin');
   Route::get('users/profile','UsersController@edit')->name('users.edit-profile');
 });
+
+Route::get('/verify','Auth\RegisterController@verifyUser')->name('verify.user');
 
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-	<a href="{{route('tags.create')}}" class="btn btn-success">@lang('translateproperties.addtag')</a>
+	<a href="{{route('tags.create')}}" class="btn btn-success"><i style="margin-right:3px;"class="fa fa-plus-circle" aria-hidden="true"></i>@lang('translateproperties.addtag')</a>
 </div>
 <div class="card card-default">
 	<div class="card-header">
@@ -25,8 +25,8 @@
 		  			{{$tag->posts->count()}}
 		  		</td>
 		  		<td>
-		  			<a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info btn-sm ">@lang('translateproperties.btnedit')</a>
-		  			<button class="btn btn-danger btn-sm" onclick="handleDelete({{$tag->id}})">@lang('translateproperties.btndelete')</button>
+		  			<a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info btn-sm "><i style="margin-right:3px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>@lang('translateproperties.btnedit')</a>
+		  			<button class="btn btn-danger btn-sm" onclick="handleDelete({{$tag->id}})"><i style="margin-right:3px;"  class="fa fa-trash-o" aria-hidden="true"></i>@lang('translateproperties.btndelete')</button>
 		  		</td>
 		  	</tr>
 		  	@endforeach

@@ -28,8 +28,10 @@
 			<div class="form-group">
 				<button class="btn btn-success">
 						@if(isset($category))
+						<i style="margin-right:3px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							 @lang('translateproperties.updatecategory')
 					  	@else
+						  <i style="margin-right:3px;"class="fa fa-plus-circle" aria-hidden="true"></i>
 							 @lang('translateproperties.addcategory')
 					  	@endif
 			  </button>

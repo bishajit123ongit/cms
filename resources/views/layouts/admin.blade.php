@@ -73,12 +73,14 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                 	 <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                   <i class="fa fa-user-md" aria-hidden="true"></i>
                                         @lang('translateproperties.userprofile')
                      </a>
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
+                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                          @lang('translateproperties.logout')
                     </a>
 
@@ -88,22 +90,6 @@
                 </div>
             </li>
         </ul>
-        
-
-    <!-- SEARCH FORM -->
-   <!--  <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form> -->
-
-    <!-- Right navbar links -->
-    
   </nav>
   <!-- /.navbar -->
 
@@ -155,7 +141,7 @@
 
            <li id="tt" class="nav-item has-treeview {{ (request()->is('tags/create')) ||(request()->is('tags')) ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+            <i style="margin-right: 8px; margin-left:5px;"class="fa fa-tags" aria-hidden="true"></i>
               <p>
                 @lang('translateproperties.t')
                 <i class="fas fa-angle-left right"></i>
@@ -233,7 +219,7 @@
 		@if(auth()->user()->isAdmin())
        <li class="nav-item">
             <a href="{{route('users.index')}}" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
-              <i class="nav-icon fa fa-cog fa-spin fa-3x fa-fw"></i>
+            <i style="margin-right: 8px;margin-left: 5px;" class="fa fa-users" aria-hidden="true"></i>
               <p>
                @lang('translateproperties.users')
               </p>
@@ -252,31 +238,31 @@
 
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview {{request()->is('tag/chart') || request()->is('post/chart') || request()->is('category/chart')? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Charts
+                @lang('translateproperties.chart')
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{route('tag.chart')}}" class="nav-link {{request()->is('tag/chart')? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>@lang('translateproperties.tagchart')</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{route('post.chart')}}" class="nav-link {{request()->is('post/chart')? 'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>@lang('translateproperties.postchart')</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{route('category.chart')}}" class="nav-link {{request()->is('category/chart')? 'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>@lang('translateproperties.categorychart')</p>
                 </a>
               </li>
             </ul>
@@ -326,6 +312,18 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
+  @if(session()->has('success'))
+    <div class="alert alert-success">
+      {{session()->get('success')}}
+    </div>
+  @endif
+
+  @if(session()->has('error'))
+    <div class="alert alert-danger">
+      {{session()->get('error')}}
+    </div>
+  @endif
     @yield('content')
     
     </div>
@@ -380,6 +378,7 @@
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/dist/js/demo.js')}}"></script>
+<script src="https://use.fontawesome.com/c1ea3167d7.js"></script>
 
 @yield('scripts')
 </body>

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\MailController;
 
 class RegisterController extends Controller
 {
@@ -62,12 +63,39 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $exist_user=User::where(['email'=>$request->email])->first();
+        if($exist_user==null)
+        {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->verification_code = sha1(time());
+            $user->save();
+
+            if($user != null){
+                MailController::sendSignupEmail($user->name, $user->email, $user->verification_code);
+                return redirect()->back()->with(session()->flash('success', 'Your account has been created. Please check email for verification link.'));
+            }
+
+            return redirect()->back()->with(session()->flash('error', 'Something went wrong!'));
+        }
+        else{
+            return redirect()->back()->with(session()->flash('error', 'User already exists,please try another email!'));
+        }
+    }
+
+    public function verifyUser(Request $request){
+        $verification_code=\Illuminate\Support\Facades\Request::get('code');
+        $user=User::where(['verification_code'=>$verification_code])->first();
+        if($user!=null){
+            $user->is_verified=1;
+            $user->save();
+            return redirect()->route('login')->with(session()->flash('success', 'Your account is verified.Please Login'));
+        }
+        return redirect()->route('login')->with(session()->flash('error', 'Invalid verification code!'));
+
     }
 }

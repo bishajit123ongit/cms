@@ -118,7 +118,11 @@
   'totalcat'=>'Total Categories',
   'totalposts'=>'Total Posts',
   'userreg'=>'User Registrations',
-  'moreinfo'=>'More Info'
+  'moreinfo'=>'More Info',
+  'chart'=>'Chart',
+  'tagchart'=>'Tag Chart',
+  'postchart'=>'Post Chart',
+  'categorychart'=>'Category Chart'
  ]
 
 ?>

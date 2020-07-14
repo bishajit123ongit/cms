@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Http\Requests\Categories\CreateCategoryRequest;
 use App\Http\Requests\Categories\UpdateCategoryRequest;
+use Carbon\Carbon;
 
 class CategoriesController extends Controller
 {
@@ -107,5 +108,17 @@ class CategoriesController extends Controller
         $msg= __('translateproperties.categorydeletemsg');
         session()->flash('success',$msg);
         return redirect(route('categories.index'));
+    }
+
+    public function viewCategoryChart()
+    {
+        $currrent_month_category=Category::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->month)->count();
+        $current_last_one_category=Category::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->subMonth(1))->count();
+        $current_last_two_category=Category::whereYear('created_at',Carbon::now()->year)
+        ->whereMonth('created_at',Carbon::now()->subMonth(2))->count();
+
+        return view('categories.showchart')->with(compact('currrent_month_category','current_last_one_category','current_last_two_category'));
     }
 }

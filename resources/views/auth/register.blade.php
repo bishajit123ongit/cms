@@ -34,7 +34,7 @@
 <body>
 
     <div class="main">
- @if ( Config::get('app.locale') == 'en')
+        @if ( Config::get('app.locale') == 'en')
                       <a id="btnbn" href="{{ url('locale/bn') }}">  <img class="imgstyle" src="public/image/bn.png"></a>
                  @else
                         <a id="btnen" href="{{ url('locale/en') }}"><img class="imgstyle" src="public/image/en.png"></a>
@@ -43,8 +43,18 @@
 
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
-                 
                 <div class="signup-content">
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                    {{session()->get('success')}}
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                     <div class="alert alert-danger">
+                             {{session()->get('error')}}
+                     </div>
+                @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <h2 class="form-title">@lang('translateproperties.createaccount')<a href="{{url('/')}}">CMS</a></h2>
@@ -91,8 +101,9 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary form-submit">
+                            <i class="fa fa-registered" aria-hidden="true"></i>
                                     @lang('translateproperties.register')
-                                </button>
+                            </button>
                         </div>
 
                     </form>
@@ -108,5 +119,6 @@
     <!-- JS -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="https://use.fontawesome.com/c1ea3167d7.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

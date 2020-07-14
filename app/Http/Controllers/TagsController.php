@@ -7,6 +7,7 @@ use App\Tag;
 use App\Http\Requests\Tags\CreateTagRequest;
 use App\Http\Requests\Tags\UpdateTagRequest;
 use Illuminate\Support\Facades\App;
+use Carbon\Carbon;
 
 class TagsController extends Controller
 {
@@ -105,5 +106,38 @@ class TagsController extends Controller
         $tag->delete();
         session()->flash('success','Tag Deleted Successfully');
         return redirect(route('tags.index'));
+    }
+
+    public function viewTagChart()
+    {
+         $currrent_month_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->month)->count();
+         $current_last_one_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(1))->count();
+         $current_last_two_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(2))->count();
+
+         $current_last_three_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(3))->count();
+         $current_last_four_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(4))->count();
+         $current_last_five_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(5))->count();
+         $current_last_six_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(6))->count();
+         $current_last_seven_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(7))->count();
+         $current_last_eight_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(8))->count();
+         $current_last_nine_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(9))->count();
+         $current_last_ten_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(10))->count();
+         $current_last_eleven_tag=Tag::whereYear('created_at',Carbon::now()->year)
+         ->whereMonth('created_at',Carbon::now()->subMonth(11))->count();
+
+        return view('tags.showchart')->with(compact('currrent_month_tag','current_last_one_tag','current_last_two_tag',
+    'current_last_three_tag','current_last_four_tag','current_last_five_tag','current_last_six_tag',
+    'current_last_seven_tag','current_last_eight_tag','current_last_nine_tag','current_last_ten_tag','current_last_eleven_tag'));
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-	<a href="{{route('posts.create')}}" class="btn btn-success">@lang('translateproperties.addpost')</a>
+	<a href="{{route('posts.create')}}" class="btn btn-success"><i style="margin-right:3px;"class="fa fa-plus-circle" aria-hidden="true"></i>@lang('translateproperties.addpost')</a>
 </div>
 
 <div class="card card-default">
@@ -37,12 +37,12 @@
                <form action="{{route('posts.restore',$post->id)}}" method="POST">
                	@csrf
                	@method('PUT')
-               	<button type="submit" class="btn btn-info btn-sm">@lang('translateproperties.postrestore')</button>
+               	<button type="submit" class="btn btn-info btn-sm"><i style="margin-right:3px;"class="fa fa-window-restore" aria-hidden="true"></i>@lang('translateproperties.postrestore')</button>
                </form>
                </td>
                @else
 				<td>
-		  			<a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm">@lang('translateproperties.btnedit')</a>
+		  			<a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm"><i style="margin-right:3px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>@lang('translateproperties.btnedit')</a>
 		  		</td>
 		  		@endif
 		  		<td>
@@ -50,6 +50,7 @@
 		  				@csrf
 		  				@method('DELETE')
 		  				<button type="submit" class="btn btn-danger btn-sm">
+						  <i style="margin-right;" class="fa fa-trash-o" aria-hidden="true"></i>
 		  					@if($post->trashed())
 		  					 @lang('translateproperties.btndelete')
 		  					@else

@@ -94,8 +94,10 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">
 					@if(isset($posts))
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
   					 @lang('translateproperties.postupdate')
   					@else
+					  <i style="margin-right:3px;"class="fa fa-plus-circle" aria-hidden="true"></i>
   					 @lang('translateproperties.addpost')
   					@endif
 				</button>
